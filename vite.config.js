@@ -12,6 +12,8 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineConfig({
+  dedupe: ['vue'],
+
   server: {
     host: '0.0.0.0',
     port: 8080,
@@ -37,7 +39,15 @@ export default defineConfig({
     lib: {
       entry: './src/views/RemoveVideoBackground.vue',
       name: 'filter-green-video-player'
-    }
+    },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
   },
 
   plugins: [

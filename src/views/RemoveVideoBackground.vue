@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       canvasContext: null,
+      timer: null,
     };
   },
   props: {
@@ -39,12 +40,12 @@ export default {
     },
     muted: {
       handler(newVal) {
-        this.$ref.videoRef.muted = newVal;
+        this.$refs.videoRef.muted = newVal;
       },
     },
     loop: {
       handler(newVal) {
-        this.$ref.videoRef.loop = newVal;
+        this.$refs.videoRef.loop = newVal;
       },
     },
   },
@@ -52,7 +53,7 @@ export default {
   mounted() {
     const canvas = this.$refs.canvasRef;
     const video = this.$refs.videoRef;
-    this.canvasContext = canvas.getContext("2d", { willReadFrequently: true });
+
     video.autoplay = this.autoplay;
     video.muted = this.muted;
     video.loop = this.loop;
@@ -64,17 +65,26 @@ export default {
         canvas.height = video.videoHeight;
         canvas.style.width = containerElement.offsetWidth + "px";
         canvas.style.height = containerElement.offsetHeight + "px";
-        setInterval(this.autoRender, 16);
+        this.timer = setInterval(this.autoRender, 16);
       },
       false
     );
+
+    this.canvasContext = canvas.getContext("2d");
+  },
+
+  beforeUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   },
 
   methods: {
     // 去除绿幕
     autoRender() {
       const video = this.$refs.videoRef;
-      if (video.paused || video.ended) {
+
+      if (video && (video.paused || video.ended)) {
         return;
       }
 
@@ -85,6 +95,7 @@ export default {
     computeFrame() {
       const canvas = this.$refs.canvasRef;
       const video = this.$refs.videoRef;
+      if (!video || !canvas) return;
       const { canvasContext } = this;
       const { width, height } = canvas;
       canvasContext.drawImage(video, 0, 0, width, height);

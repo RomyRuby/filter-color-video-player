@@ -1,8 +1,7 @@
 {
   "name": "filter-color-video-player",
-  "version": "0.0.1",
-  "private": true,
-  "dist": "./dist/yhfy-ai1.mjs",
+  "version": "0.1.2",
+  "main": "./dist/filter-color-video-player.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +9,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
+  "type": "module",
   "peerDependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.4.15"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

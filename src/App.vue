@@ -8,7 +8,11 @@
   <!-- 使用注意事项 -->
   <!-- 处理后的画布宽高等于宽外层容器的宽高 -->
   <!-- 由于浏览器限制，静音视频可以自动播放，非静音视频需要在用户与界面交互后才可播放 -->
-  <RemoveVideoBackground videoSrc="/1.mp4" :removeColors="[[3, 255, 0, 100]]" />
+  <RemoveVideoBackground
+    style="width: 400px; height: 200px"
+    videoSrc="/1.mp4"
+    :removeColors="[[3, 255, 0, 100]]"
+  />
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 {
   "name": "filter-color-video-player",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "./dist/filter-color-video-player.js",
   "scripts": {
     "dev": "vite",

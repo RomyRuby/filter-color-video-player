@@ -8,11 +8,13 @@
   <!-- 使用注意事项 -->
   <!-- 处理后的画布宽高等于宽外层容器的宽高 -->
   <!-- 由于浏览器限制，静音视频可以自动播放，非静音视频需要在用户与界面交互后才可播放 -->
-  <RemoveVideoBackground
-    style="width: 400px; height: 200px"
-    videoSrc="/1.mp4"
-    :removeColors="[[3, 255, 0, 100]]"
-  />
+  <div>
+    <RemoveVideoBackground
+      style="width: 300px; height: 200px"
+      videoSrc="https://1302481062.vod-qcloud.com/2778fbfdvodcq1302481062/31545cbb1253642697417787986/3E67zy7wUF8A.mp4"
+      :removeColors="[[255, 255, 255, 50]]"
+    />
+  </div>
 </template>
 
 <script>

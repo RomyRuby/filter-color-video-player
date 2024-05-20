@@ -1,7 +1,12 @@
 <template>
   <div class="video-container" ref="container">
     <!-- 处理后的视频 -->
-    <video class="video" ref="videoRef" :src="videoSrc"></video>
+    <video
+      class="video"
+      ref="videoRef"
+      :src="videoSrc"
+      crossOrigin="Anonymous"
+    ></video>
     <canvas class="canvas" ref="canvasRef"></canvas>
   </div>
 </template>
